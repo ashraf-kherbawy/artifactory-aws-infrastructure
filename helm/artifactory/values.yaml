@@ -10,16 +10,16 @@ artifactory:
       path: artifactory/filestore
       useInstanceCredentials: true
   image:
-    registry: 035274893828.dkr.ecr.eu-central-1.amazonaws.com
-    repository: ashrafk/jfrog/artifactory-pro
+    registry: ACCOUNT_ID.dkr.ecr.eu-central-1.amazonaws.com
+    repository: jfrog/artifactory-pro
     tag: latest
 
-initContainerImage: 035274893828.dkr.ecr.eu-central-1.amazonaws.com/ashrafk/redhat/ubi9:9.2.691
+initContainerImage: ACCOUNT_ID.dkr.ecr.eu-central-1.amazonaws.com/redhat/ubi9:9.2.691
 
 serviceAccount:
   create: true
   annotations: 
-    eks.amazonaws.com/role-arn: arn:aws:iam::035274893828:role/ashrafk-eks-pod-role
+    eks.amazonaws.com/role-arn: <EKS-S3-ROLE-ARN> ## aws iam get-role --role-name EKS-POD-ROLE --query 'Role.Arn'
 
 mc:
   enabled: true
