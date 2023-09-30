@@ -19,3 +19,18 @@ The main.tf file contains all of the following AWS modules:
   3. RDS
   4. AWS LBC iAM role and OIDC iAM role
 
+Make sure that you check all of the modules, and replace any values needed. Further instructions are included in the README for each module's directory. 
+Once you finish adding the paramaters you need, create the resources using Terraform init and apply:
+
+```
+terraform init
+```
+```
+terraform apply
+```
+
+## Helm details:
+
+We are using Helm for Artifactory, and Nginx Ingress controller, which we need to use so the Ingress can have it's LB provisioned by AWS Load balancer controller. We will be using JFrog's Artifactory Helm chart, and I included a values.yaml which has all of the necessary values to use in correlation with the AWS Infra that we will create, such as S3 and RDS.
+
+Each chart will contain further details on each of it's README.
