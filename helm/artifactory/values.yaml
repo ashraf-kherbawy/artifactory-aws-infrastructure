@@ -1,0 +1,42 @@
+artifactory:
+  replicaCount: 1
+  masterKey: db4d503aa3b1d816db581cb7a80437aed64de24df6dfafcbc4382e635976313e
+  joinKey: c39169d18c03dfdd56c644f7886b01786bd1d5b04fd0bfbb43c950281d1f0352
+  persistence: 
+    type: s3-storage-v3-direct
+    awsS3V3: 
+      region: eu-central-1
+      bucketName: artifactory-aws
+      path: artifactory/filestore
+      useInstanceCredentials: true
+  image:
+    registry: 035274893828.dkr.ecr.eu-central-1.amazonaws.com
+    repository: ashrafk/jfrog/artifactory-pro
+    tag: latest
+
+initContainerImage: 035274893828.dkr.ecr.eu-central-1.amazonaws.com/ashrafk/redhat/ubi9:9.2.691
+
+serviceAccount:
+  create: true
+  annotations: 
+    eks.amazonaws.com/role-arn: arn:aws:iam::035274893828:role/ashrafk-eks-pod-role
+
+mc:
+  enabled: true
+
+database: 
+  type: postgresql
+  driver: org.postgresql.Driver
+  secrets: 
+    user:
+      name: "rds-artifactory"
+      key: "db-user"
+    password:
+      name: "rds-artifactory"
+      key: "db-password"
+    url:
+      name: "rds-artifactory"
+      key: "db-url"
+
+postgresql:
+  enabled: false
