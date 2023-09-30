@@ -1,5 +1,5 @@
 resource "aws_iam_role" "artifactory-s3-full-access" {
-  name = "ashrafk-eks-pod-role"
+  name = "eks-pod-s3-role"
   
   assume_role_policy = jsonencode({
     Version = "2012-10-17",
@@ -8,11 +8,11 @@ resource "aws_iam_role" "artifactory-s3-full-access" {
         Action = "sts:AssumeRoleWithWebIdentity",
         Effect = "Allow",
         Principal = {
-          Federated = "arn:aws:iam::035274893828:oidc-provider/oidc.eks.eu-central-1.amazonaws.com/id/8811D60987AA6FA9E658192D9BA01F14" // Replace with OIDC of your EKS
+          Federated = "<YOUR-EKS-OIDC>" // Replace with OIDC of your EKS
         },
         Condition = {
           StringEquals = {
-            "oidc.eks.eu-central-1.amazonaws.com/id/8811D60987AA6FA9E658192D9BA01F14:aud": [ // Replace with OIDC of your EKS
+            "<YOUR-EKS-OIDC>": [ // Replace with OIDC of your EKS
                 "sts.amazonaws.com"
             ]
           }
@@ -22,7 +22,7 @@ resource "aws_iam_role" "artifactory-s3-full-access" {
   })
 
   tags = {
-    provisioned_by = "ashrafk-terraform"
+    provisioned_by = "terraform"
   }
 }
 

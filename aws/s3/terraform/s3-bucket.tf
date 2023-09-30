@@ -2,7 +2,7 @@ resource "aws_s3_bucket" "artifactory_s3_bucket" {
   bucket = "ashrafk-artifactory-bucket"
   
   tags = {
-    provisioned_by = "ashrafk-terraform"
+    provisioned_by = "terraform"
   }
 }
 

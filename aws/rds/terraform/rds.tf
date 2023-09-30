@@ -11,13 +11,13 @@ resource "aws_security_group" "artifactory_rds_postgres_sg" {
   }
 
   tags = {
-    provisioned_by = "ashrafk-terraform"
+    provisioned_by = "terraform"
   }
 }
 
 resource "aws_db_subnet_group" "artifatory_rds_postgres_subnet_group" {
   name       = "artifatory_rds_postgres_subnet_group"
-  subnet_ids = ["subnet-0121ff1e70acdb11a", "subnet-0c4010f0329a40ca0", "subnet-0b858936b0e92f433"]  # Replace with your subnet IDs in the same VPC as EKS
+  subnet_ids = ["[SUBNET LIST]"]  # Replace with your subnet IDs in the same VPC as EKS
 }
 
 resource "aws_db_instance" "artifactory_rds_postgres" {
@@ -38,10 +38,12 @@ resource "aws_db_instance" "artifactory_rds_postgres" {
   vpc_security_group_ids = [aws_security_group.artifactory_rds_postgres_sg.id]
 
   tags = {
-    provisioned_by = "ashrafk-terraform"
+    provisioned_by = "terraform"
   }
 }
 
+
+## Outputs to use later in Artifactory's values.yaml
 output "database_endpoint" {
   value = aws_db_instance.artifactory_rds_postgres.endpoint
 }
