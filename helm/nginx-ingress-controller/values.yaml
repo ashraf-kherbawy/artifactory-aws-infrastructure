@@ -1,0 +1,9 @@
+controller:
+  config:
+    use-forwarded-headers: "true"
+  service:
+    annotations:
+      service.beta.kubernetes.io/aws-load-balancer-type: "nlb"
+    targetPorts:
+      http: http
+      https: http
