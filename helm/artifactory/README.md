@@ -1,7 +1,10 @@
 # Installing Artifactory's Helm Chart
 
 The provided values.yaml is a good standard to start with, utilising most of the infrastructure we have created. 
-
+To install the chart, use the following Helm command with the values.yaml:
+```
+helm upgrade --install artifactory jfrog/artifactory -f values.yaml -n <YOUR-NAMESPACE>
+```
 ## Using S3's direct upload binary provider
 
 Now that we have created the S3 bucket, we specified in the values.yaml to use ```artifactory.persistence.type=s3-storage-v3-direct```, which will tell the chart
