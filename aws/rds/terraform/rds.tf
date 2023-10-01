@@ -1,6 +1,6 @@
 resource "aws_security_group" "artifactory_rds_postgres_sg" {
   name_prefix = "artifactory_rds_postgres_sg"
-  vpc_id = "vpc-041856119e9fa9666"
+  vpc_id = "vpc-id"
   
   # Allow incoming traffic from your EKS cluster's CIDR block on port 5432
   ingress {
