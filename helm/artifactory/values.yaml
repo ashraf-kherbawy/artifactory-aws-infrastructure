@@ -10,16 +10,16 @@ artifactory:
       path: artifactory/filestore
       useInstanceCredentials: true
   image:
-    registry: ACCOUNT_ID.dkr.ecr.eu-central-1.amazonaws.com
+    registry: ACCOUNT_ID.dkr.ecr.REGION.amazonaws.com
     repository: jfrog/artifactory-pro
     tag: latest
 
-initContainerImage: ACCOUNT_ID.dkr.ecr.eu-central-1.amazonaws.com/redhat/ubi9:9.2.691
+initContainerImage: ACCOUNT_ID.dkr.ecr.REGION.amazonaws.com/redhat/ubi9:9.2.691
 
 serviceAccount:
   create: true
   annotations: 
-    eks.amazonaws.com/role-arn: <EKS-S3-ROLE-ARN> ## aws iam get-role --role-name EKS-POD-ROLE --query 'Role.Arn'
+    eks.amazonaws.com/role-arn: <EKS-S3-ROLE-ARN> ## aws iam get-role --role-name EKS-S3-POD-ROLE --query 'Role.Arn'
 
 mc:
   enabled: true
@@ -40,3 +40,17 @@ database:
 
 postgresql:
   enabled: false
+
+ingress:
+  enabled: true
+  defaultBackend:
+    enabled: true
+  hosts:
+    - "example.com"
+  routerPath: /
+  artifactoryPath: /artifactory/
+  className: nginx
+  annotations: 
+    nginx.ingress.kubernetes.io/proxy-body-size: "0"
+    nginx.ingress.kubernetes.io/proxy-read-timeout: "2400"
+    nginx.ingress.kubernetes.io/proxy-send-timeout: "2400"
