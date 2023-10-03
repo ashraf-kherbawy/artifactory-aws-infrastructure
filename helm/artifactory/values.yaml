@@ -24,6 +24,9 @@ serviceAccount:
 mc:
   enabled: true
 
+nginx:
+  enabled: false
+
 database: 
   type: postgresql
   driver: org.postgresql.Driver
