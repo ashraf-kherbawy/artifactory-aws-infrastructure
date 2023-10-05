@@ -27,8 +27,8 @@ podman tag releases-docker.jfrog.io/jfrog/artifactory-pro:latest ACCOUNT_ID.dkr.
 ```
 And then finally, push the images:
 ```
-docker push ACCOUNT_ID.dkr.ecr.eu-central-1.amazonaws.com/redhat/ubi9:9.2.691
+podman push ACCOUNT_ID.dkr.ecr.eu-central-1.amazonaws.com/redhat/ubi9:9.2.691
 ```
 ```
-docker push ACCOUNT_ID.dkr.ecr.eu-central-1.amazonaws.com/jfrog/artifactory-pro:latest
+podman push ACCOUNT_ID.dkr.ecr.eu-central-1.amazonaws.com/jfrog/artifactory-pro:latest
 ```
