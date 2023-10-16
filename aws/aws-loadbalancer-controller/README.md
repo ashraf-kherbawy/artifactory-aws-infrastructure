@@ -1,6 +1,6 @@
 # AWS Load Balancer Controller 
 
-For load balancer provisioning, I will be using AWS LBC, which will provision an ALB for the Ingress that the Artifactory chart creates.
+For load balancer provisioning, I will be using AWS LBC, which will provision an ALB for the Ingress that the Artifactory chart creates. AWS LBC itself cannot be provionsed with Terraform, thus, you will need to install it (I used Helm option) by following the [official documentation](https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.6/deploy/installation/).
 
 ## Load Balancer Controller iAM roles
 
